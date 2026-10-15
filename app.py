@@ -9,8 +9,23 @@ st.set_page_config(page_title="Job Market Explorer", layout="wide")
 st.title("Job Market Analysis & Job Recommendations")
 st.caption("Exploratory analysis of the supplied Upwork postings dataset. Rates and forecasts are dataset-specific.")
 
+
+import gdown
+
+# Download the dataset from Google Drive if it is not present
+path = "all_upwork_jobs_2024-02-07-2024-03-24.csv"
+file_id = "https://drive.google.com/file/d/1Jk49jo4pp0qtiKWxQ-fGyh4GAXNmq67G/view?usp=sharing"
+
+if not os.path.exists(path):
+    with st.spinner("Downloading job dataset..."):
+        gdown.download(
+            id=file_id,
+            output=path,
+            quiet=False
+        )
+
 upload = st.file_uploader("Upload the job CSV", type=["csv"])
-path = os.getenv("DATA_PATH", "all_upwork_jobs_2024-02-07-2024-03-24.csv")
+
 if upload is not None:
     df = pd.read_csv(upload)
 elif os.path.exists(path):
