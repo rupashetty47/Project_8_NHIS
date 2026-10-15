@@ -14,7 +14,7 @@ import gdown
 
 # Download the dataset from Google Drive if it is not present
 path = "all_upwork_jobs_2024-02-07-2024-03-24.csv"
-file_id = "https://drive.google.com/file/d/1Jk49jo4pp0qtiKWxQ-fGyh4GAXNmq67G/view?usp=sharing"
+file_id = "1Jk49jo4pp0qtiKWxQ-fGyh4GAXNmq67G"
 
 if not os.path.exists(path):
     with st.spinner("Downloading job dataset..."):
